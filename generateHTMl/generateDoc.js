@@ -1,12 +1,16 @@
 const path = require('path')
 
-const getBlogContent = require('../getLogContents/getChromeLogContents')
+const getChromeBlogContent = require('../getLogContents/getChromeLogContents')
 const fsAsync = require('../utils/fs')
+
+const getBlogContent = {
+    chrome: getChromeBlogContent
+}
 
 const generateHtml = (version, name) => {
     fsAsync.readFile(__dirname + '/../htmlTemplate/' + name +'Template.html')
         .then(template => {
-            getBlogContent(version)
+            getBlogContent[name](version)
                 .then(content => {
                     let document = template.replace('<div class="anchor"></div>', content)
                     fsAsync.writeFile(__dirname + 
@@ -30,4 +34,4 @@ const generateHtml = (version, name) => {
         })
 }
 
-generateHtml('90', 'chrome')
+generateHtml('89', 'chrome')

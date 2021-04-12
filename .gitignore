@@ -1,3 +1,6 @@
+# 爬取的文档不需要上传至GitHub
+documents
+
 # Logs
 logs
 *.log
