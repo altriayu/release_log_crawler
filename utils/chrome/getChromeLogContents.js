@@ -1,7 +1,7 @@
 const superagent = require('superagent')
 const cheerio = require('cheerio')
 
-const getChromeUrl = require('../getLogUrl/getChromeLogUrl')
+const getChromeUrl = require('./getChromeLogUrl')
 
 const getChromeLogContent = async (version) => {
     try {
