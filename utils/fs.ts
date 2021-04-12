@@ -1,11 +1,10 @@
-const fs = require('fs')
+import * as fs from "fs"
 
-
-function readFile(path){
+export const readFile = (path:string): Promise<NodeJS.ErrnoException | string> => {
     return new Promise((resolve, reject) => {
-        fs.readFile(path, { flag: 'r+', encoding: 'utf8' }, (err, data) => {
+        fs.readFile(path, { flag: 'r+', encoding: 'utf8' }, (err, data:string) => {
             if(err){
-                reject(err)
+                reject('文件读取失败')
             }else{
                 resolve(data)
             }
@@ -13,7 +12,7 @@ function readFile(path){
     })
 }
 
-function writeFile(path, data){
+export const writeFile = (path, data): Promise<NodeJS.ErrnoException | string> => {
     return new Promise((resolve, reject) => {
         fs.writeFile(path, data, { flag: 'w+', encoding: 'utf8' }, (err) => {
             if(err){
@@ -24,7 +23,3 @@ function writeFile(path, data){
         })
     })
 }
-
-
-exports.readFile = readFile
-exports.writeFile = writeFile

@@ -1,9 +1,8 @@
-const superagent = require('superagent')
-const cheerio = require('cheerio')
+import * as superagent from "superagent"
+import * as cheerio from 'cheerio'
+import { getChromeUrl } from './getChromeLogUrl'
 
-const getChromeUrl = require('./getChromeLogUrl')
-
-const getChromeLogContent = async (version) => {
+export const getChromeBlogContent = async (version: string): Promise<string | any> => {
     try {
         const url = await getChromeUrl(version)
         if(url) {
@@ -17,4 +16,3 @@ const getChromeLogContent = async (version) => {
     }
 }
 
-module.exports = getChromeLogContent
