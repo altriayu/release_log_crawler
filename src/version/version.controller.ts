@@ -19,6 +19,6 @@ export class VersionController {
     @Post('/update')
     async updateLatestVersionByType(@Body() body: Version) {
         const res = await this.versionService.updateLatestVersionByType(body)
-        return new ResultFormat<string>('更新版本成功').success()
+        return new ResultFormat<null>().success()
     }
 }

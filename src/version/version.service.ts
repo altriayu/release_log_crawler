@@ -10,11 +10,7 @@ export class VersionService {
 
     async getLatestVersion(type: string): Promise<string> {
         const item = (await this.VersionModel.findOne({type}).exec())
-        if(item) {
-            return item.latestVersion
-        } else {
-            return '错误'
-        }
+        return item.latestVersion
     }
 
     async updateLatestVersionByType(version: Version): Promise<Version> {
