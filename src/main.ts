@@ -3,8 +3,12 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module'
 import { join } from 'path';
 import { generateHtml } from './utils/generateHTML.js'
+import { updateDocument } from './utils/updateDocument';
 
 // generateHtml('72', 'chrome')
+// setTimeout(() => {
+//   updateDocument('chrome')
+// }, 5000);
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
