@@ -3,14 +3,14 @@ import { Document } from 'mongoose'
 
 @Schema()
 export class Doc {
-    @Prop({ required: true })
-    type: string;
+  @Prop({ required: true })
+  type: string;
 
-    @Prop({ required: true })
-    version: string;
+  @Prop({ required: true })
+  version: string;
 
-    @Prop({ required: true })
-    path: string;
+  @Prop({ required: true })
+  path: string;
 }
 
 export type DocDocument = Doc & Document
