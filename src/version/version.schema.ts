@@ -4,7 +4,7 @@ import { Document } from 'mongoose'
 @Schema()
 export class Version {
   @Prop({ required: true })
-  type: string;
+  name: string;
 
   @Prop({ required: true })
   latestVersion: string;

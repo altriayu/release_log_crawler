@@ -1,4 +1,4 @@
 export class CreateVersionDto {
-  type: string;
+  name: string;
   latestVersion: string;
 }

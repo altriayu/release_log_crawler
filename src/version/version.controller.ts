@@ -12,10 +12,10 @@ export class VersionController {
     this.resultFormat = new ResultFormat()
   }
 
-  @Get('/:type')
-  async getDocumentLatestVersion(@Param('type') type: string) {
+  @Get('/:name')
+  async getDocumentLatestVersion(@Param('name') name: string) {
     let err, res
-    [err, res] = await to(this.versionService.getLatestVersion(type))
+    [err, res] = await to(this.versionService.getLatestVersion(name))
     if (res) {
       return this.resultFormat.success({ latestVersion: res })
     } else {
@@ -24,9 +24,9 @@ export class VersionController {
   }
 
   @Post('/update')
-  async updateLatestVersionByType(@Body() body: Version) {
+  async updateLatestVersionByName(@Body() body: Version) {
     let err, res
-    [err, res] = await to(this.versionService.updateLatestVersionByType(body))
+    [err, res] = await to(this.versionService.updateLatestVersionByName(body))
     if (res) {
       return this.resultFormat.success()
     } else {

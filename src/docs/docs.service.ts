@@ -9,8 +9,8 @@ import { Doc, DocDocument } from "./docs.schema";
 export class DocsService {
   constructor(@InjectModel('docs') private DocModel: Model<DocDocument>) {}
 
-  async getAllDocumentPathByType(type: string): Promise<Doc[]> {
-    const res = await this.DocModel.find({type: type}).exec()
+  async getAllDocumentPathByName(name: string): Promise<Doc[]> {
+    const res = await this.DocModel.find({name: name}).exec()
     return res
   }
 

@@ -16,13 +16,13 @@ export const updateDocument = async (name: string) => {
             console.log("版本文档成功")
             console.log("当前版本为：", version)
             const addNewDocumentPathToDatabase = await superagent.post("http://localhost:3000/docs/add").send({
-                type: name,
+                name: name,
                 version: version,
                 path: '/docs/' + name + 'v ' + version
             })
             if(addNewDocumentPathToDatabase.body.message === 'SUCCESS') {
                 console.log("将最新文档路径添加到数据库成功")
-                const updateDatabaseLatestVersion =await superagent.post("http://localhost:3000/version/update").send({version,type:name})
+                const updateDatabaseLatestVersion =await superagent.post("http://localhost:3000/version/update").send({version, name})
                 if(updateDatabaseLatestVersion.body.message === 'SUCCESS') {
                     console.log("更新数据库最新版本成功")
                 } else {

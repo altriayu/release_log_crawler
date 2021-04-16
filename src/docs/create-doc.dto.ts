@@ -1,5 +1,5 @@
 export class CreateDocDto {
-  type: string;
+  name: string;
   version: string;
   path: string;
 }

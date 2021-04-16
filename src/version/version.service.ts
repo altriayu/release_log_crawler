@@ -8,9 +8,9 @@ import to from 'await-to-js'
 export class VersionService {
   constructor(@InjectModel('version') private VersionModel: Model<VersionDocument>) { }
 
-  async getLatestVersion(type: string): Promise<string> {
+  async getLatestVersion(name: string): Promise<string> {
     let err, item: Version
-    [err, item] = await to(this.VersionModel.findOne({ type }).exec())
+    [err, item] = await to(this.VersionModel.findOne({ name }).exec())
     if (err) {
       console.log('查询失败')
     } else {
@@ -18,8 +18,8 @@ export class VersionService {
     }
   }
 
-  async updateLatestVersionByType(version: Version) {
-    const res = await this.VersionModel.updateOne({ type: version.type }, version, { new: true })
+  async updateLatestVersionByName(version: Version) {
+    const res = await this.VersionModel.updateOne({ name: version.name }, version, { new: true })
     console.log('res', res)
     return res
   }
