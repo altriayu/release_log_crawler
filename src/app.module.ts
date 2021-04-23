@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { DocsModule } from './docs/docs.module';
 import { VersionModule } from './version/version.module';
 
-const mongoUrl:string = 'mongodb://docs:docsPWD@10.0.0.1:27017/docs?authSource=docs'
+const mongoUrl:string = 'mongodb://docs:docsPWD@39.108.137.215:27017/docs?authSource=docs'
 @Module({
   imports: [DocsModule,VersionModule, MongooseModule.forRoot(mongoUrl)],
   controllers: [AppController],

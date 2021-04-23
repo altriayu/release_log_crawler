@@ -12,11 +12,22 @@ export class DocsController {
     this.resultFormat = new ResultFormat()
   }
 
+  @Get('')
+  async getAllDocumentsPath() {
+    const [err, res] = await to(this.docService.getAllDocumentPath())
+    if (res) {
+      console.log(this.resultFormat.success(res))
+      return this.resultFormat.success(res)
+    } else {
+      return this.resultFormat.error("9999", "ERROR")
+    }
+  }
+
   @Get('/:name')
   async getAllDocumentsPathByName(@Param('name') name: string) {
     const [err, res] = await to(this.docService.getAllDocumentPathByName(name))
     if (res) {
-      this.resultFormat.success(res)
+      return this.resultFormat.success(res)
     } else {
       return this.resultFormat.error("9999", "ERROR")
     }
