@@ -37,7 +37,7 @@ export class DocsController {
   async addDocumentPath(@Body() body: CreateDocDto) {
     const [err, res] = await to(this.docService.addDocumentPath(body))
     if (res) {
-      this.resultFormat.success(res)
+      return this.resultFormat.success(res)
     } else {
       return this.resultFormat.error("9999", "ERROR")
     }

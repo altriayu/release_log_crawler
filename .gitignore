@@ -1,5 +1,5 @@
 # 爬取的文档不需要上传至GitHub
-public/docs
+public/documents/*
 
 # Logs
 logs
