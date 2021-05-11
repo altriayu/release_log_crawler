@@ -12,6 +12,15 @@ const getLaterVersion = {
   chrome: getChromeLaterVersion
 }
 
+/**
+ * 该函数负责接收一个文档当前的最新版本和该文档的名字
+ * 然后尝试获取是否有比这个版本更新的版本。
+ * 如果存在，则尝试获取新版本的文档，调用各个方法，将文档保存在本地，并且更新数据库
+ * @param nowVersion 当前数据库当中最新版本的版本号
+ * @param name 需要爬取的文档名称
+ * @returns 
+ */
+
 export const generateHtml = async (nowVersion: string, name: string): Promise<string | NodeJS.ErrnoException> => {
   try {
     const template = await readFile(__dirname + '/../../htmlTemplate/' + name + 'Template.html') + ''

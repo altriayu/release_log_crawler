@@ -1,3 +1,7 @@
+/**
+ * 封装一个支Promise版本的fs读写方法
+ */
+
 import * as fs from "fs"
 export const readFile = (path: string): Promise<NodeJS.ErrnoException | string> => {
   return new Promise((resolve, reject) => {

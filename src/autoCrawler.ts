@@ -7,12 +7,16 @@ interface DocVersion  {
   version: string;
 }
 
+
+/**
+ * 爬虫功能的入口程序，再logList配置需要爬取的文档，配置后台的端口即可调用对应方法
+ */
+const logList = ["chrome"]
+const serviceUrl = "http://localhost:3005"  //后台地址
+
 export const autoUpdatelogs = async() => {
   console.log("autoUpdatelogs")
-  const serviceUrl = "http://localhost:3005"  //后台地址
-  const logList = ["chrome"]  // 需要更新的文档列表。
   let versionList:DocVersion[] = []
-
   const asyncGetVersion = async (arr: DocVersion[], logName) => {
     return new Promise(async (resolve, reject) => {
       let errs, res
@@ -32,14 +36,6 @@ export const autoUpdatelogs = async() => {
   }
 
   for(let i = 0; i < versionList.length; i++) {
-    console.log(versionList[i])
     generateHtml(versionList[i].version, versionList[i].name)
   }
 }
-
-// export const autoUpdatelogs = async () => {
-//   updateLogs()
-//   // setInterval(() => {
-//   //   updateLogs()
-//   // }, 1000)
-// }

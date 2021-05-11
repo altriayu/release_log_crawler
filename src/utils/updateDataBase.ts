@@ -5,6 +5,11 @@ import { generateHtml } from "./generateHTML"
 
 const serviceHost = 'http://localhost:3005'
 
+/**
+ * 更新数据库当中保存的最新版本号
+ * @param name 
+ * @param version 
+ */
 export const updateLatestVersion = async (name: string, version: string) => {
     const updateVersionQueryBody = {
       name: name,
@@ -17,6 +22,11 @@ export const updateLatestVersion = async (name: string, version: string) => {
     }
 }
 
+/**
+ * 向数据库当中添加新文档的path信息
+ * @param name 
+ * @param version 
+ */
 export const updateDocPath = async (name: string, version:string) => {
   const updatePathQueryBody = {
     name: name,

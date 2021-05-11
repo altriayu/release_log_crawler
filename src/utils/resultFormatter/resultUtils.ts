@@ -1,3 +1,7 @@
+/**
+ * 对返回给前端的数据做格式化
+ */
+
 interface iResultData<T> {
   statusCode: string
   body: T
