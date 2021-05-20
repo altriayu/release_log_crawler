@@ -7,11 +7,13 @@ import { autoUpdatelogs } from './autoCrawler';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
-  app.useStaticAssets(join(__dirname, "..", "public"))
+  app.useStaticAssets(join(__dirname, '..', 'public'),{
+    prefix: '/'
+  })
   await app.listen(3005);
 }
 bootstrap().then(() => {
   setInterval(() => {
     autoUpdatelogs()
-  },10000)
+  }, 1000 * 60 * 60 * 24)
 })
